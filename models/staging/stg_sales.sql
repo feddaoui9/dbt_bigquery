@@ -7,8 +7,7 @@
       },
     cluster_by = [
      "country"
-    ],
-    partition_expiration_days = None    
+    ]      
 )}}
 
 SELECT
@@ -18,4 +17,5 @@ SELECT
     amount,
     country,
     discount,
+    {{ dynamic_partition('order_date', 'MONTH') }}  
 FROM `sales-analytics-459112.sales_dataset.raw_sales`
