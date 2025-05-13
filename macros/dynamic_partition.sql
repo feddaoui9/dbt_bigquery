@@ -1,3 +1,4 @@
+-- This model is used to stage the sales data for further analysis
 {% macro dynamic_partition(column_name, interval) %}
     CASE 
         WHEN DATE({{ column_name }}) >= DATE_SUB(CURRENT_DATE(), INTERVAL 3 {{ interval }}) THEN 'recent'
